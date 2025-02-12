@@ -23,3 +23,32 @@ console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
+
+// object
+let student = [1, 2, 3, 4, 5];
+
+localStorage.setItem("student", JSON.stringify(student));
+let data = localStorage.getItem("student");
+console.log(JSON.parse(data));
+
+// Promises
+async function getData() {
+  try {
+    let url = `https://jsonplaceholder.typicode.com/users`;
+    let response = await fetch(url, {
+      method: "GET",
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
+      // body: JSON.stringify(obj1),
+    });
+
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+getData();
+
+// HTTP Methods => Read (GET) , CREATE (POST) , Update (PUT), Delete (DELETE)
