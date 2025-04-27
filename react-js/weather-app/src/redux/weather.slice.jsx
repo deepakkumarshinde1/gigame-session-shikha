@@ -1,12 +1,13 @@
-const { createSlice } = require("@reduxjs/toolkit");
-
+import { createSlice } from "@reduxjs/toolkit";
 const WeatherSlice = createSlice({
   name: "WeatherSlice",
   initialState: {
     list: [],
   },
   reducers: {
-    saveWeatherDetails() {},
+    saveWeatherDetails(state, action) {
+      state.list.push(action.payload);
+    },
     getWeatherDetails() {},
   },
 });

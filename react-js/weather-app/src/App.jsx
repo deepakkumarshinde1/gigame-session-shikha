@@ -4,10 +4,16 @@ import { getWeatherDetails } from "./redux/weather.slice";
 
 function App() {
   let dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getWeatherDetails());
-  });
-  return <div>App</div>;
+  const handelChange = (event) => {
+    if (event.keyCode === 13 && event.target.value.length > 0) {
+      dispatch(getWeatherDetails(event.target.value));
+    }
+  };
+  return (
+    <div>
+      <input type="text" onKeyUp={handelChange} />
+    </div>
+  );
 }
 
 export default App;
